@@ -1,8 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const { mongoose } = require('./GrgicBackProject/db.js/index.js');
-var employeeController = require('./controllers/productcontroller.js');
+const { mongoose } = require('./db.js');
+var productController = require('./controller/productcontroller.js');
 
 var app = express();
 app.use(bodyParser.json());

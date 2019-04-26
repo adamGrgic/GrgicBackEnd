@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 // makes a request
 var { Product } = require('../models/product');
 router.get('/', (_req, res) => res.json('Product Root'));
-router.get('/list', (_req, res) => {
+router.get('/', (req, res) => {
     Product.find((err, docs) => {
         if (!err) { res.send(docs); }
         else { console.log('Error in Retriving Products :' + JSON.stringify(err, undefined, 2)); }
@@ -27,20 +27,20 @@ router.post('/', (req, res) => {
     });
 });
 
-//updates existing record 
-router.put('/:id', (req, res) => {
-    const emp = new Product({
-        title: req.body.title,
-        description: req.body.description,
-        price: req.body.price
-        // file: req.body.file,
-    })
-    // request id => employee object (body) =>/ callback => response for API 
-    Employee.findByIdAndUpdate({'_id': mongoose.Types.ObjectId(req.params.id)}, emp,
-         (err, mongores) => {
-            if (!err) {res.send(mongores); }
-            else { console.log('Error in Product Update :' + JSON.stringify(err, undefined, 2)); }
-         });
-})
+// //updates existing record 
+// router.put('/:id', (req, res) => {
+//     const emp = new Product({
+//         title: req.body.title,
+//         description: req.body.description,
+//         price: req.body.price
+//         // file: req.body.file,
+//     })
+//     // request id => employee object (body) =>/ callback => response for API 
+//     Employee.findByIdAndUpdate({'_id': mongoose.Types.ObjectId(req.params.id)}, emp,
+//          (err, mongores) => {
+//             if (!err) {res.send(mongores); }
+//             else { console.log('Error in Product Update :' + JSON.stringify(err, undefined, 2)); }
+//          });
+// })
 
 module.exports = router;
