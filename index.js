@@ -1,19 +1,22 @@
+/* eslint-disable no-console */
 const express = require('express');
 const bodyParser = require('body-parser');
+require('./db.js');
+const productController = require('./controller/productcontroller.js');
+const subscriberController = require('./controller/subscribercontroller.js');
 
-const { mongoose } = require('./db.js');
-var productController = require('./controller/productcontroller.js');
-
-var app = express();
+const app = express();
 app.use(bodyParser.json());
 // allows other front ends to use this data
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-  });
-  
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  // res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, OPTIONS, DELETE');
+  next();
+});
 
-app.use('/product', productController)
+// routing
+app.use('/product', productController);
+app.use('/subscriptions', subscriberController);
 
-app.listen(3000, () => console.log('Server started at port : 3000')); 
+app.listen(3000, () => console.log('Server started at port : 3000'));

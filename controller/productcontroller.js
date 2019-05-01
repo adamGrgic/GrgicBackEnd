@@ -15,7 +15,7 @@ router.get('/list', (req, res) => {
 
 router.get('/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send('No record with given id : ${req.params.id}');
+        return res.status(404).send('No record with given id : ${req.params.id}');
 
     Product.findById(req.params.id, (err, doc) => {
         if (!err) { res.send(doc); }
@@ -41,7 +41,7 @@ router.post('/', (req, res) => {
 //updates existing record 
 router.put('/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send('No record with given id : ${req.params.id}');
+        return res.status(404).send('No record with given id : ${req.params.id}');
 
         var product = {
             // grabs the data from the body 
@@ -59,7 +59,7 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
     if (!ObjectId.isValid(req.params.id))
-        return res.status(400).send('No record with given id : ${req.params.id}');
+        return res.status(404).send('No record with given id : ${req.params.id}');
 
     product.findByIdAndRemove(req.params.id, (err,doc) => {
         if (!err) { res.send(doc); }
