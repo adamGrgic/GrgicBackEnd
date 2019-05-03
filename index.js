@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 require('./db.js');
 const productController = require('./controller/productcontroller.js');
 const subscriberController = require('./controller/subscribercontroller.js');
+const chargeController = require('./controller/chargecontroller.js');
 
 const app = express();
 app.use(bodyParser.json());
@@ -18,5 +19,6 @@ app.use((req, res, next) => {
 // routing
 app.use('/product', productController);
 app.use('/subscriptions', subscriberController);
+// app.use('/charge', chargeController);
 
 app.listen(3000, () => console.log('Server started at port : 3000'));
