@@ -30,7 +30,7 @@ router.post('/', (req, res) => {
     title: req.body.title,
     description: req.body.description,
     price: req.body.price,
-    file: req.body.file,
+    image: req.body.image,
   });
     // saves the data
   product.save((err, doc) => {

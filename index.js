@@ -4,10 +4,11 @@ const bodyParser = require('body-parser');
 require('./db.js');
 const productController = require('./controller/productcontroller.js');
 const subscriberController = require('./controller/subscribercontroller.js');
-const chargeController = require('./controller/chargecontroller.js');
+// const chargeController = require('./controller/chargecontroller.js');
+const portfoliocontroller = require('./controller/portfoliocontroller');
 
 const app = express();
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '50mb' }));
 // allows other front ends to use this data
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
@@ -17,6 +18,7 @@ app.use((req, res, next) => {
 });
 
 // routing
+app.use('/portfolio', portfoliocontroller);
 app.use('/product', productController);
 app.use('/subscriptions', subscriberController);
 // app.use('/charge', chargeController);
