@@ -9,7 +9,9 @@ const { Portfolio } = require('../models/portfolio');
 
 router.get('/', (req, res) => res.json('Portfolio Root'));
 router.get('/list', (req, res) => {
+  console.log('curly mustaches are cool', Portfolio);
   Portfolio.find((err, docs) => {
+    console.log('docs', docs);
     if (!err) { return res.send(docs); }
     return console.log(`Error in Retriving Portfolios :${JSON.stringify(err, undefined, 2)}`);
   });
@@ -26,7 +28,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
   const portfolio = new Portfolio({
     // grabs the data from the body
-    title: req.body.title,
+    name: req.body.name,
     description: req.body.description,
     image: req.body.image,
   });
@@ -42,9 +44,9 @@ router.put('/:id', (req, res) => {
 
   const portfolio = {
     // grabs the data from the body
-    title: req.body.title,
+    name: req.body.name,
     description: req.body.description,
-    file: req.body.file,
+    image: req.body.image,
   };
   // eslint-disable-next-line max-len
   return Portfolio.findByIdAndUpdate(req.params.id, { $set: portfolio }, { new: true }, (err, doc) => {

@@ -5,7 +5,7 @@ require('./db.js');
 const productController = require('./controller/productcontroller.js');
 const subscriberController = require('./controller/subscribercontroller.js');
 // const chargeController = require('./controller/chargecontroller.js');
-const portfoliocontroller = require('./controller/portfoliocontroller');
+const portfoliocontroller = require('./controller/portfoliocontroller.js');
 
 const app = express();
 app.use(bodyParser.json({ limit: '50mb' }));

@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 
-const Portfolio = mongoose.model('Portfolio', {
+const Inquiries = mongoose.model('Inquiries', {
   // imagePath: {type: String, required: true},
   name: { type: String },
   description: { type: String },
   image: { type: String },
-}, 'Portfolio');
+}, 'Inquiries');
 
-module.exports = { Portfolio };
+module.exports = { Inquiries };
