@@ -7,7 +7,7 @@ const Inquiries = mongoose.model('Inquiries', {
   Business: { type: String },
   Email: { type: String },
   Budget: { type: String },
-  OtherComments: {type: String }
+  OtherComments: { type: String },
 }, 'Inquiries');
 
 module.exports = { Inquiries };
