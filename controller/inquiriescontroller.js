@@ -26,10 +26,11 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
   const inquiries = new Inquiries({
     // grabs the data from the body
-    title: req.body.title,
-    description: req.body.description,
-    price: req.body.price,
-    image: req.body.image,
+    DesignService: req.body.DesignService,
+    Business: req.body.Business,
+    Email: req.body.Email,
+    Budget: req.body.Budget,
+    OtherComments: req.body.OtherComments,
   });
     // saves the data
   inquiries.save((err, doc) => {
@@ -43,11 +44,13 @@ router.put('/:id', (req, res) => {
 
   const inquiries = {
     // grabs the data from the body
-    title: req.body.title,
-    description: req.body.description,
-    price: req.body.price,
-    file: req.body.file,
+    DesignService: req.body.DesignService,
+    Business: req.body.Business,
+    Email: req.body.Email,
+    Budget: req.body.Budget,
+    OtherComments: req.body.OtherComments,
   };
+  // eslint-disable-next-line max-len
   return Inquiries.findByIdAndUpdate(req.params.id, { $set: inquiries }, { new: true }, (err, doc) => {
     if (!err) { res.send(doc); } else { console.log(`Error in Inquiries Update :${JSON.stringify(err, undefined, 2)}`); }
   });
