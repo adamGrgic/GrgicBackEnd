@@ -7,6 +7,7 @@ const subscriberController = require('./controller/subscribercontroller.js');
 const chargeController = require('./controller/chargecontroller.js');
 const portfoliocontroller = require('./controller/portfoliocontroller.js');
 const inquiriescontroller = require('./controller/inquiriescontroller.js');
+const blogcontroller = require('./controller/blogcontroller.js');
 
 const app = express();
 app.use(bodyParser.json({ limit: '50mb' }));
@@ -24,5 +25,6 @@ app.use('/product', productController);
 app.use('/subscriptions', subscriberController);
 app.use('/inquiries', inquiriescontroller);
 app.use('/charge', chargeController);
+app.use('/blog', blogcontroller);
 
 app.listen(3000, () => console.log('Server started at port : 3000'));
