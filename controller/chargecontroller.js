@@ -25,3 +25,5 @@ router.post('/', (req, res) => {
       res.status(500).send({ error: 'Purchase Failed' });
     });
 });
+
+module.exports = router;
